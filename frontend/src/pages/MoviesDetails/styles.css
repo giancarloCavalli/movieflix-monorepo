@@ -1,0 +1,38 @@
+.movie-det-container {
+  padding: 10px;
+}
+
+.movie-rating-includer {
+  margin-top: 15px;
+  padding: 15px;
+  text-align: center;
+}
+
+.movie-rating-includer button {
+  width: 100%;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #000000;
+}
+
+.movie-reviews-container {
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.movie-det-comment {
+  margin-bottom: 20px;
+}
+
+@media (min-width:768px) {
+  .movie-det-container {
+    padding: 30px;
+  }
+
+  .movie-rating-includer button {
+    max-width: 40%;
+  }
+}

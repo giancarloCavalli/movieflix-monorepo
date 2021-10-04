@@ -1,0 +1,30 @@
+.rating-card-container {
+  background-color: var(--main-card-bg-color);
+}
+
+.rating-username {
+  font-size: 1.1em;
+  margin-left: 15px;
+}  
+
+.star-wrapper {
+  margin-left: 5px;
+}
+
+.comment-box {
+  margin-top: 5px;
+  padding: 10px;
+  color: #9E9E9E;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
+}
+
+@media (min-width:768px) {
+  .star-wrapper {
+    margin-left: 20px;
+  }
+
+  .rating-username {
+    font-size: 1.3em;
+  }  
+}

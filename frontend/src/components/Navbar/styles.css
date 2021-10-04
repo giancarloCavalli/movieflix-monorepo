@@ -1,0 +1,22 @@
+.navbar-container {
+  color: #000000;
+  background-color: var(--primary-color);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-container h2 {
+  color: #000000;
+  font-size: 1.5em;
+}
+
+.navbar-login a {
+  padding: 2px 30px;
+  color: #000000;
+  font-weight: 700;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
