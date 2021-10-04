@@ -1,5 +1,7 @@
+import { User } from "./user";
+
 export type NewReview = {
-  userId: number,
-  movieId: number,
-  text: string
-}
+  text: string,
+  user: User,
+  movieId: number
+};

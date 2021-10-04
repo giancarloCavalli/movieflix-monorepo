@@ -27,7 +27,11 @@ const MoviesDetails = () => {
     else {
       const newReview: NewReview = {
         ...formData,
-        userId: getAuthData().userId,
+        user: {
+          id: getAuthData().userId,
+          name: "",
+          email: ""
+        },
         movieId: parseInt(movieId)
       }
   
