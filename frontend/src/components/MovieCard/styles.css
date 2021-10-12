@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.movie-card-img-container-synopsis {
+  padding: 0 15px;
+}
+
 .movie-card-info-container {
   padding: 5px 15px 15px 15px;
 }
@@ -25,4 +29,26 @@
   border-radius: 10px;
   color: #9E9E9E;
   margin-top: 15px;
+}
+
+@media(min-width: 768px) {
+  .movie-card-img-container {
+    text-align: center;
+  }
+  
+  .movie-card-img-container img {
+    width: 80%;
+  }
+}
+
+@media(min-width: 992px) {
+  .movie-card-container-synopsis {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  .movie-card-img-container img {
+    width: 100%;
+  }
 }

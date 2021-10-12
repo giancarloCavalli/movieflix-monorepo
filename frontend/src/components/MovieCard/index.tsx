@@ -8,8 +8,8 @@ type Props = {
 
 const MovieCard = ({ movie, showSynopsis }: Props) => {
   return (
-    <div className="movie-card-container">
-      <div className="movie-card-img-container">
+    <div className={`movie-card-container ${showSynopsis ? 'movie-card-container-synopsis' : ''}`}>
+      <div className={`movie-card-img-container ${showSynopsis ? 'movie-card-img-container-synopsis' : ''}`}>
         <img src={movie.imgUrl} alt="Movie" />
       </div>
 
