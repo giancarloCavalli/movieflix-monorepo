@@ -18,7 +18,7 @@ type FormData = {
   text: string
 }
 
-const MoviesDetails = () => {
+const MovieDetails = () => {
   const { register, handleSubmit } = useForm<FormData>();
 
   const onSubmit = (formData: FormData) => {
@@ -111,4 +111,4 @@ const MoviesDetails = () => {
   );
 };
 
-export default MoviesDetails;
+export default MovieDetails;

@@ -1,0 +1,19 @@
+.movie-card-container {
+  padding: 20px 0;
+}
+
+.movie-card-img-container img {
+  width: 100%;
+}
+
+.movie-card-info-container {
+  padding: 5px 15px 15px 15px;
+}
+
+.movie-card-info-year {
+  color: var(--primary-color);
+}
+
+.movie-card-info-subtitle {
+  font-size: 0.9rem;
+}

@@ -56,6 +56,18 @@ h1 {
   margin-bottom: 15px;
 }
 
+.transparent {
+  color: transparent;
+}
+
+@media(min-width: 576px) {
+  .col-2-sm {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 20px;
+  }
+}
+
 @media (min-width: 992px) {
   h1 {
     font-size: 2.6rem;
@@ -64,4 +76,12 @@ h1 {
   h2 {
     font-size: 2.8em;
   }  
+}
+
+@media(min-width: 1200px) {
+  .col-4-xl {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    column-gap: 20px;
+  }
 }

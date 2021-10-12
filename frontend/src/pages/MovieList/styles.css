@@ -1,0 +1,31 @@
+.movie-list-container {
+  padding: 15px;
+}
+
+.movie-list-container h2 {
+  margin-bottom: 40px;
+}
+
+.movie-list-list {
+  font-size: 1.1rem;
+}
+
+.movie-list-item {
+  margin-bottom: 15px;
+}
+
+@media(min-width: 576px) {
+  .movie-list-item {
+    margin-bottom: 15px;
+  }
+}
+
+@media(min-width: 992px) {
+  .movie-list-list {
+    font-size: 1.5rem;
+  }
+
+  .movie-list-item {
+    margin-bottom: 20px;
+  }
+}

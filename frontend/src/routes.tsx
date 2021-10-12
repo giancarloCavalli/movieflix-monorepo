@@ -1,8 +1,8 @@
 import { Router, Switch, Route } from "react-router-dom";
 import Navbar from "components/Navbar";
 import Login from "pages/Login";
-import MoviesDetails from "pages/MoviesDetails";
-import MoviesList from "pages/MoviesList";
+import MovieDetails from "pages/MovieDetails";
+import MovieList from "pages/MovieList";
 import history from "utils/history";
 import { isAuthenticated } from "utils/auth";
 
@@ -12,13 +12,13 @@ const Routes = () => {
       <Navbar />
       <Switch>
         <Route path="/" exact>
-          {isAuthenticated() ? <MoviesList /> : <Login />}
+          {isAuthenticated() ? <MovieList /> : <Login />}
         </Route>
         <Route path="/movies" exact>
-          <MoviesList />
+          <MovieList />
         </Route>
         <Route path="/movies/:movieId">
-          <MoviesDetails />
+          <MovieDetails />
         </Route>
       </Switch>
     </Router>
