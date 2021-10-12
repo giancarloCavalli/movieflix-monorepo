@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import MovieCard from "components/MovieCard";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Movie } from "types/movie";
 import { SpringPage } from "types/vendor/spring";
 import { requestBackend } from "utils/requests";
@@ -27,12 +28,12 @@ const MovieList = () => {
 
   return (
     <div className="movie-list-container">
-      <h2>Listagem de filmes</h2>
-
-      <div className="movie-list-list col-2-sm col-4-xl">
+      <div className="movie-list-list movie-list-grid">
         {page?.content.map((movie) => (
           <div className="movie-list-item base-card">
-            <MovieCard movie={movie} />
+            <Link to={`/movies/${movie.id}`}>
+              <MovieCard movie={movie} />
+            </Link>
           </div>
         ))}
       </div>

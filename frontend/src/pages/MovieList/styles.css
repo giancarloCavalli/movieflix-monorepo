@@ -18,6 +18,12 @@
   .movie-list-item {
     margin-bottom: 15px;
   }
+
+  .movie-list-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 20px;
+  }
 }
 
 @media(min-width: 992px) {
@@ -27,5 +33,11 @@
 
   .movie-list-item {
     margin-bottom: 20px;
+  }
+}
+
+@media(min-width: 1200px) {
+  .movie-list-grid {
+    grid-template-columns: auto auto auto auto;
   }
 }

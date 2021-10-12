@@ -1,4 +1,5 @@
 import { AxiosRequestConfig } from "axios";
+import MovieCard from "components/MovieCard";
 import RatingCard from "components/RatingCard";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -15,44 +16,43 @@ type UrlParams = {
 };
 
 type FormData = {
-  text: string
-}
+  text: string;
+};
 
 const MovieDetails = () => {
   const { register, handleSubmit } = useForm<FormData>();
 
   const onSubmit = (formData: FormData) => {
     if (formData.text === "")
-      window.alert("Preencha uma avaliação para salvá-la!")
+      window.alert("Preencha uma avaliação para salvá-la!");
     else {
       const newReview: NewReview = {
         ...formData,
         user: {
           id: getAuthData().userId,
           name: "",
-          email: ""
+          email: "",
         },
-        movieId: parseInt(movieId)
-      }
-  
-      const params: AxiosRequestConfig = {
-        method: 'POST',
-        url: '/reviews',
-        withCredentials: true,
-        data: newReview
+        movieId: parseInt(movieId),
       };
-  
+
+      const params: AxiosRequestConfig = {
+        method: "POST",
+        url: "/reviews",
+        withCredentials: true,
+        data: newReview,
+      };
+
       requestBackend(params)
-        .then(response => {
-          console.log("Review registrada com sucesso!")
+        .then((response) => {
+          console.log("Review registrada com sucesso!");
           window.location.reload();
         })
-        .catch(error => {
-          console.log('Erro ao registrar comentário');
+        .catch((error) => {
+          console.log("Erro ao registrar comentário");
           console.log(error);
-        })
+        });
     }
-
   };
 
   const { movieId } = useParams<UrlParams>();
@@ -63,7 +63,7 @@ const MovieDetails = () => {
     const params: AxiosRequestConfig = {
       method: "GET",
       url: `/movies/${movieId}`,
-      withCredentials: true
+      withCredentials: true,
     };
 
     requestBackend(params)
@@ -77,7 +77,7 @@ const MovieDetails = () => {
 
   return (
     <div className="movie-det-container">
-      <h2>Detalhes do filme: {movie?.title}</h2>
+      <div className="base-card">{movie ? <MovieCard movie={movie} showSynopsis={true} /> : ""}</div>
 
       {hasAnyRoles(["ROLE_MEMBER"]) ? (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -92,7 +92,9 @@ const MovieDetails = () => {
               />
             </div>
             <div>
-              <button className="button" type="submit">SALVAR AVALIAÇÃO</button>
+              <button className="button" type="submit">
+                SALVAR AVALIAÇÃO
+              </button>
             </div>
           </div>
         </form>

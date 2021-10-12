@@ -10,10 +10,19 @@
   padding: 5px 15px 15px 15px;
 }
 
-.movie-card-info-year {
+.movie-card-year-container {
   color: var(--primary-color);
 }
 
-.movie-card-info-subtitle {
+.movie-card-subtitle-container {
   font-size: 0.9rem;
+}
+
+.movie-card-synopsis-container {
+  padding: 10px;
+  border: 1px solid #e1e1e1;
+  box-sizing: border-box;
+  border-radius: 10px;
+  color: #9E9E9E;
+  margin-top: 15px;
 }
