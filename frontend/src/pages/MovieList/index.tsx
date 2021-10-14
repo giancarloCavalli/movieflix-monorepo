@@ -25,6 +25,7 @@ const MovieList = () => {
       params: {
         page: 0,
         size: 12,
+        
       },
     };
 

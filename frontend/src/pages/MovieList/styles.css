@@ -24,6 +24,10 @@
   background-color: transparent !important;
 }
 
+.movie-list-select__menu-list {
+  background-color: var(--main-card-bg-color);
+}
+
 .movie-list-select__placeholder {
   color: #FFF !important;
 }
