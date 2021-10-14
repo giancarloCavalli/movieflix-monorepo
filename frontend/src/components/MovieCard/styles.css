@@ -48,6 +48,11 @@
     grid-template-columns: auto auto;
   }
 
+  .movie-card-img-container {
+    display: flex;
+    align-items: center;  
+  }
+
   .movie-card-img-container img {
     width: 100%;
   }
