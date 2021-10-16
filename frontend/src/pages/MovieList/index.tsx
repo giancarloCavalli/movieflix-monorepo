@@ -1,4 +1,3 @@
-import Select from "react-select";
 import { AxiosRequestConfig } from "axios";
 import MovieCard from "components/MovieCard";
 import { useEffect, useState } from "react";
@@ -6,15 +5,11 @@ import { Link } from "react-router-dom";
 import { Movie } from "types/movie";
 import { SpringPage } from "types/vendor/spring";
 import { requestBackend } from "utils/requests";
+import MovieFilter from "components/MovieFilter";
+
 import "./styles.css";
 
 const MovieList = () => {
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
-
   const [page, setPage] = useState<SpringPage<Movie>>();
 
   useEffect(() => {
@@ -25,7 +20,6 @@ const MovieList = () => {
       params: {
         page: 0,
         size: 12,
-        
       },
     };
 
@@ -36,19 +30,10 @@ const MovieList = () => {
 
   return (
     <div className="movie-list-container">
-      <div className="movie-list-select-container base-card">
-        <Select
-          options={options}
-          classNamePrefix="movie-list-select"
-          isMulti
-          isClearable
-          placeholder="Categoria"
-        />
-      </div>
-
+      <MovieFilter />
       <div className="movie-list-list movie-list-grid">
         {page?.content.map((movie) => (
-          <div className="movie-list-item base-card">
+          <div className="movie-list-item base-card" key={movie.id}>
             <Link to={`/movies/${movie.id}`}>
               <MovieCard movie={movie} />
             </Link>
