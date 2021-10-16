@@ -20,27 +20,39 @@
   display: none;
 }
 
+.movie-filter-select__option--is-focused {
+  background-color: limegreen !important;
+}
+
+.movie-filter-select__multi-value {
+  background-color: var(--main-bg-color) !important;
+}
+
+.movie-filter-select__multi-value__label {
+  color: #FFF !important;
+}
+
 @media(min-width: 576px) {
-  .movie-filter-select__control {
-    width: 50%;
+  .movie-filter-select__control, .movie-filter-select__menu {
+    width: 55% !important;
   }
 }
 
 @media(min-width: 768px) {
-  .movie-filter-select__control {
-    width: 45%;
+  .movie-filter-select__control, .movie-filter-select__menu {
+    width: 50% !important;
   }
 }
 
 @media(min-width: 992px) {
-  .movie-filter-select__control {
-    width: 37%;
+  .movie-filter-select__control, .movie-filter-select__menu {
+    width: 45% !important;
   }
 }
 
 @media(min-width: 1200px) {
-  .movie-filter-select__control {
-    width: 30%;
+  .movie-filter-select__control, .movie-filter-select__menu {
+    width: 40% !important;
   }
 
   .movie-filter-select-container {
