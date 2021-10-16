@@ -51,6 +51,5 @@ axios.interceptors.response.use(function (response) {
 }, function (error) {
   if (error.response.status === 401 || error.response.status === 403)
     history.push('/');
-
-  return Promise.reject(error);
+    return Promise.reject(error);
 });

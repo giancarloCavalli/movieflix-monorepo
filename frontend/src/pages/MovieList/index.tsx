@@ -25,6 +25,10 @@ const MovieList = () => {
     setComponentsControl({activePage: pageNumber, genreFilter: componentsControl.genreFilter});
   }
 
+  const handleGenreChange = (genre: Genre) => {
+    setComponentsControl({activePage: 0, genreFilter: genre});
+  }
+
   const getMovies = useCallback(() => {
     const params: AxiosRequestConfig = {
       method: "GET",
@@ -32,7 +36,8 @@ const MovieList = () => {
       withCredentials: true,
       params: {
         page: componentsControl.activePage,
-        size: 4,
+        size: 8,
+        genreId: componentsControl.genreFilter?.id
       },
     };
   
@@ -47,7 +52,7 @@ const MovieList = () => {
 
   return (
     <div className="movie-list-container">
-      <MovieFilter />
+      <MovieFilter onChange={handleGenreChange} />
       <div className="movie-list-list movie-list-grid">
         {page?.content.map((movie) => (
           <div className="movie-list-item base-card" key={movie.id}>
@@ -58,6 +63,7 @@ const MovieList = () => {
         ))}
       </div>
       <Pagination
+        forcePage={page?.number}
         pageCount={page ? page.totalPages : 0}
         range={2}
         onChange={handlePageChange}

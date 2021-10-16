@@ -4,12 +4,13 @@ import { ReactComponent as PaginationArrow } from 'assets/images/arrow.svg';
 import './styles.css';
 
 type Props = {
+  forcePage?: number,
   pageCount: number,
   range: number,
   onChange?: (pageNumber: number) => void
 }
 
-const Pagination = ({ pageCount, range, onChange }: Props) => {
+const Pagination = ({ forcePage, pageCount, range, onChange }: Props) => {
   return (
       <ReactPaginate
         pageCount={pageCount}
@@ -24,6 +25,7 @@ const Pagination = ({ pageCount, range, onChange }: Props) => {
         nextLabel={<div className="pagination-next-container"><PaginationArrow /></div>}
         disabledClassName="arrow-inactive"
         onPageChange={(items) => (onChange) ? onChange(items.selected) : {}}
+        forcePage={forcePage}
       />
   )
 }

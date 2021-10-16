@@ -4,13 +4,17 @@ import Select from "react-select";
 import { Genre } from "types/genre";
 import { requestBackend } from "utils/requests";
 
-import './styles.css';
+import "./styles.css";
 
 type Props = {
-  onChange?: () => void;
-}
+  onChange: (genre: Genre) => void;
+};
 
 const MovieFilter = ({ onChange }: Props) => {
+  const handleGenreChange = (genre: Genre) => {
+    onChange(genre);
+  };
+
   const [genres, setGenres] = useState<Genre[]>([]);
 
   useEffect(() => {
@@ -22,8 +26,9 @@ const MovieFilter = ({ onChange }: Props) => {
 
     requestBackend(params).then((response) => {
       const data = response.data as Genre[];
-      console.log('ATRIBUIU',data)
       setGenres(data);
+    }).catch(error => {
+      console.log('Erro ao buscar categorias', error)
     });
   }, []);
 
@@ -36,6 +41,7 @@ const MovieFilter = ({ onChange }: Props) => {
         placeholder="Categoria"
         getOptionLabel={(genre: Genre) => genre.name}
         getOptionValue={(genre: Genre) => String(genre.id)}
+        onChange={(value) => handleGenreChange(value as Genre)}
       />
     </div>
   );
