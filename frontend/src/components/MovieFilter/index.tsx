@@ -6,7 +6,11 @@ import { requestBackend } from "utils/requests";
 
 import './styles.css';
 
-const MovieFilter = () => {
+type Props = {
+  onChange?: () => void;
+}
+
+const MovieFilter = ({ onChange }: Props) => {
   const [genres, setGenres] = useState<Genre[]>([]);
 
   useEffect(() => {
@@ -28,7 +32,6 @@ const MovieFilter = () => {
       <Select
         options={genres}
         classNamePrefix="movie-filter-select"
-        isMulti
         isClearable
         placeholder="Categoria"
         getOptionLabel={(genre: Genre) => genre.name}
