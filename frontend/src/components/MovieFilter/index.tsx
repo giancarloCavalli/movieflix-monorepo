@@ -38,7 +38,7 @@ const MovieFilter = ({ onChange }: Props) => {
         options={genres}
         classNamePrefix="movie-filter-select"
         isClearable
-        placeholder="Categoria"
+        placeholder="Gênero do filme..."
         getOptionLabel={(genre: Genre) => genre.name}
         getOptionValue={(genre: Genre) => String(genre.id)}
         onChange={(value) => handleGenreChange(value as Genre)}
