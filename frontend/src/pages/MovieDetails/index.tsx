@@ -1,9 +1,10 @@
 import { AxiosRequestConfig } from "axios";
 import MovieCard from "components/MovieCard";
 import RatingCard from "components/RatingCard";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Movie } from "types/movie";
 import { NewReview } from "types/newReview";
 import { hasAnyRoles } from "utils/auth";
@@ -20,11 +21,11 @@ type FormData = {
 };
 
 const MovieDetails = () => {
-  const { register, handleSubmit } = useForm<FormData>();
+  const { register, handleSubmit, setValue } = useForm<FormData>();
 
   const onSubmit = (formData: FormData) => {
     if (formData.text === "")
-      window.alert("Preencha uma avaliação para salvá-la!");
+      toast.info("Preencha uma avaliação para salvá-la.");
     else {
       const newReview: NewReview = {
         ...formData,
@@ -45,11 +46,12 @@ const MovieDetails = () => {
 
       requestBackend(params)
         .then((response) => {
-          console.log("Review registrada com sucesso!");
-          window.location.reload();
+          toast.success("Avaliação registrada com sucesso!");
+          getMovie();
+          setValue("text", "");
         })
         .catch((error) => {
-          console.log("Erro ao registrar comentário");
+          toast.error("Erro ao registrar comentário");
           console.log(error);
         });
     }
@@ -59,7 +61,7 @@ const MovieDetails = () => {
 
   const [movie, setMovie] = useState<Movie>();
 
-  useEffect(() => {
+  const getMovie = useCallback(() => {
     const params: AxiosRequestConfig = {
       method: "GET",
       url: `/movies/${movieId}`,
@@ -75,9 +77,15 @@ const MovieDetails = () => {
       });
   }, [movieId]);
 
+  useEffect(() => {
+    getMovie();
+  }, [getMovie]);
+
   return (
     <div className="movie-det-container">
-      <div className="base-card">{movie ? <MovieCard movie={movie} showSynopsis={true} /> : ""}</div>
+      <div className="base-card">
+        {movie ? <MovieCard movie={movie} showSynopsis={true} /> : ""}
+      </div>
 
       {hasAnyRoles(["ROLE_MEMBER"]) ? (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -102,13 +110,17 @@ const MovieDetails = () => {
         <></>
       )}
 
-      <div className="base-card movie-reviews-container">
-        {movie?.reviews.map((review) => (
-          <div className="movie-det-comment" key={review.id}>
-            <RatingCard review={review} />
-          </div>
-        ))}
-      </div>
+      {movie?.reviews.length ? (
+        <div className="base-card movie-reviews-container">
+          {movie?.reviews.map((review) => (
+            <div className="movie-det-comment" key={review.id}>
+              <RatingCard review={review} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

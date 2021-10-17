@@ -1,5 +1,6 @@
 .login-container {
   padding: 10px;
+  color: var(--primary-font-color);
 }
 
 .login-content {

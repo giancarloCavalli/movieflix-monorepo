@@ -1,5 +1,6 @@
 .movie-card-container {
   padding: 20px 0;
+  color: var(--primary-font-color);
 }
 
 .movie-card-img-container img {

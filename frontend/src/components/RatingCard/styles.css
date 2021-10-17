@@ -1,5 +1,6 @@
 .rating-card-container {
   background-color: var(--main-card-bg-color);
+  color: var(--primary-font-color);
 }
 
 .rating-username {

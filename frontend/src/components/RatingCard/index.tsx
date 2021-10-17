@@ -4,7 +4,7 @@ import { Review } from "types/review";
 import "./styles.css";
 
 type Props = {
-  review: Review
+  review: Review,
 }
 
 const RatingCard = ({ review }: Props) => {

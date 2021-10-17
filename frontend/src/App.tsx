@@ -1,6 +1,10 @@
+import 'react-toastify/dist/ReactToastify.css';
+
 import { AuthContexData, AuthContext } from "AuthContext";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 import Routes from "routes";
+
 import "./App.css";
 
 function App() {
@@ -12,6 +16,7 @@ function App() {
     <AuthContext.Provider value={{ authContextData, setAuthContextData }}>
       <div className="App">
         <Routes />
+        <ToastContainer />
       </div>
     </AuthContext.Provider>
   );
